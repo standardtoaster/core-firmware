@@ -1,3 +1,4 @@
+MAKEFLAGS = -j 2
 
 # Define the compiler/tools prefix
 GCC_PREFIX = arm-none-eabi-
