@@ -55,7 +55,8 @@ INCLUDE_DIRS += $(LIB_CORE_COMMUNICATION_PATH)/src
 # Compiler flags
 CFLAGS =  -g3 -gdwarf-2 -Os -mcpu=cortex-m3 -mthumb 
 CFLAGS += $(patsubst %,-I$(SRC_PATH)/%,$(INCLUDE_DIRS)) -I.
-CFLAGS += -ffunction-sections -Wall -Werror -fmessage-length=0 
+#CFLAGS += -ffunction-sections -Wall -Werror -fmessage-length=0 
+CFLAGS += -ffunction-sections -Wall -fmessage-length=0 
 
 # Generate dependancy files automatically.
 CFLAGS += -MD -MP -MF $@.d
@@ -72,6 +73,7 @@ CPPFLAGS = -fno-exceptions -fno-rtti
 LDFLAGS += -T../linker/linker_stm32f10x_md_dfu.ld -nostartfiles -Xlinker --gc-sections 
 LDFLAGS += -L$(SRC_PATH)/$(LIB_CORE_COMMON_PATH)/build -lcore-common-lib
 LDFLAGS += -L$(SRC_PATH)/$(LIB_CORE_COMMUNICATION_PATH)/build -lcore-communication-lib
+LDFLAGS += -Lelectricatan-hex
 LDFLAGS += -Wl,-Map,$(TARGET).map
 
 # Assember flags
@@ -83,9 +85,13 @@ ALLOBJ += $(addprefix $(BUILD_PATH)/, $(CSRC:.c=.o))
 ALLOBJ += $(addprefix $(BUILD_PATH)/, $(CPPSRC:.cpp=.o))
 ALLOBJ += $(addprefix $(BUILD_PATH)/, $(ASRC:.S=.o))
 
+
 ALLDEPS += $(addprefix $(BUILD_PATH)/, $(CSRC:.c=.o.d))
 ALLDEPS += $(addprefix $(BUILD_PATH)/, $(CPPSRC:.cpp=.o.d))
 ALLDEPS += $(addprefix $(BUILD_PATH)/, $(ASRC:.S=.o.d))
+ALLDEPS += electricatan-hex/*.o.d
+
+
 
 # All Target
 all: elf bin hex size

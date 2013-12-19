@@ -13,7 +13,6 @@ INCLUDE_DIRS += inc
 CSRC +=
 
 # C++ source files included in this build.
-CPPSRC += $(TARGET_SRC_PATH)/application.cpp
 CPPSRC += $(TARGET_SRC_PATH)/main.cpp
 CPPSRC += $(TARGET_SRC_PATH)/newlib_stubs.cpp
 CPPSRC += $(TARGET_SRC_PATH)/spark_utilities.cpp
@@ -39,7 +38,13 @@ CPPSRC += $(TARGET_SRC_PATH)/usb_endp.cpp
 CPPSRC += $(TARGET_SRC_PATH)/usb_istr.cpp
 CPPSRC += $(TARGET_SRC_PATH)/usb_prop.cpp
 CPPSRC += $(TARGET_SRC_PATH)/wifi_credentials_reader.cpp
+CPPSRC += $(TARGET_SRC_PATH)/../../electricatan-hex/hexmain.cpp
+CPPSRC += $(TARGET_SRC_PATH)/../../electricatan-hex/ShifterOut.cpp
+CPPSRC += $(TARGET_SRC_PATH)/../../electricatan-hex/ShifterIn.cpp
+CPPSRC += $(TARGET_SRC_PATH)/../../electricatan-hex/Dice.cpp
+CPPSRC += $(TARGET_SRC_PATH)/../../electricatan-hex/Steve.cpp
+CPPSRC += $(TARGET_SRC_PATH)/../../electricatan-hex/Introspection.cpp
+
 
 # ASM source files included in this build.
 ASRC +=
-
